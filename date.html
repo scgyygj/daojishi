@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<style>
+    .box{
+        width:500px;
+        hight:100px;
+        position:fixed;
+        top: 50%;
+        left:50%;
+        right: -50px;
+    }
+</style>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+<script>
+    setInterval(function () {
+        let date=new Date();
+        let now=date.getTime();
+
+        let zhongqiu=new Date("2017/10/4 00:00:00");
+        let zq=zhongqiu.getTime();
+
+        let sjc=Math.floor((zq-now)/1000);
+
+        let days=Math.floor(sjc/(60*60*24));
+         sjc=sjc%(60*60*24);
+          console.log(sjc);
+        let hour=Math.floor(sjc/(60*60));
+         sjc=sjc%(60*60);
+        let  min=Math.floor(sjc/60);
+        sjc=sjc%60;
+        let box=document.querySelector('.box');
+        box.innerHTML=`
+    距中秋节还有${days}天${hour}小时${min}分${sjc}秒
+    `
+    },1000)
+
+
+    setInterval(fn,1000);
+    let after=new Date();
+    after.setMinutes(after.getMinutes()+3);
+    function fn() {
+        let now1=new Date();
+        let cha=Math.floor((after.getTime()-now1.getTime())/1000);
+        let min1=Math.floor(cha/60);
+        let sec1=cha%60;
+        let box1=document.querySelector('.box1');
+        box1.innerHTML=`
+    倒计时${min1}分${sec1}秒`
+
+    }
+
+</script>
+</body>
+</html>
